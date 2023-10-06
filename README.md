@@ -49,7 +49,7 @@ Path to image file
 ```
 
 #### - `alt`
-An alternate text for an image, if the image cannot be displayed.
+An alternate text for an image, if the image cannot be displayed
 
 ```html
 <Image src="/image.svg" alt="Application Logo" />

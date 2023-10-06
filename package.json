@@ -1,6 +1,18 @@
 {
   "name": "vue-image-svg",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "description": "Universal Vue 3 component for images and SVGs with inline mode",
+  "author": "merik",
+  "keywords": [
+    "vue",
+    "svg",
+    "inline",
+    "inject",
+    "image",
+    "replace"
+  ],
+  "repository": "https://github.com/Ignatsyuk/vue-inline-svg",
+  "license": "MIT",
   "main": "./dist/image.umd.js",
   "module": "./dist/image.es.js",
   "exports": {
