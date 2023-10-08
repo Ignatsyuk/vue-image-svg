@@ -12,7 +12,7 @@ npm install vue-image-svg
 
 Register locally in your component
 ```js
-import Image from 'vue-image-svg';
+import { Image } from 'vue-image-svg';
 
 export default {
     components: {
