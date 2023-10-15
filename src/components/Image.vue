@@ -18,11 +18,11 @@ const props = defineProps({
 })
 </script>
 
-<style scoped>
+<style>
 svg path:not([fill]),
 svg rect:not([fill]),
 svg g:not([fill]),
 svg ellipse:not([fill]) {
-  fill: currentColor
+  fill: currentColor;
 }
 </style>

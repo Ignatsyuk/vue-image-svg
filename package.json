@@ -1,6 +1,6 @@
 {
   "name": "vue-image-svg",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Universal Vue 3 component for images and SVGs with inline mode",
   "author": "merik",
   "keywords": [
@@ -21,7 +21,8 @@
     ".": {
       "require": "./dist/image.umd.js",
       "import": "./dist/image.es.js"
-    }
+    },
+    "./dist/*": "./dist/*"
   },
   "scripts": {
     "dev": "vite",
