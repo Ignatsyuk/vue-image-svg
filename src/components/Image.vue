@@ -23,6 +23,6 @@ svg path:not([fill]),
 svg rect:not([fill]),
 svg g:not([fill]),
 svg ellipse:not([fill]) {
-  fill: currentColor;
+  fill: currentColor !important;
 }
 </style>

@@ -1,4 +1,4 @@
-import { h as u, openBlock as l, createBlock as c, unref as a, createElementBlock as g } from "vue";
+import { h as u, openBlock as l, createBlock as a, unref as c, createElementBlock as g } from "vue";
 const s = {};
 function d(e) {
   return Object.keys(e).reduce((t, n) => (e[n] !== !1 && e[n] !== null && e[n] !== void 0 && (t[n] = e[n]), t), {});
@@ -89,10 +89,10 @@ const h = {
         r.open("GET", e, !0), r.onload = () => {
           if (r.status >= 200 && r.status < 400)
             try {
-              let i = new DOMParser().parseFromString(r.responseText, "text/xml").getElementsByTagName("svg")[0];
-              i ? t(i) : n(new Error('Loaded file is not valid SVG"'));
-            } catch (o) {
-              n(o);
+              let o = new DOMParser().parseFromString(r.responseText, "text/xml").getElementsByTagName("svg")[0];
+              o ? t(o) : n(new Error('Loaded file is not valid SVG"'));
+            } catch (i) {
+              n(i);
             }
           else
             n(new Error("Error loading SVG"));
@@ -123,12 +123,7 @@ function m(e) {
     return t;
   }, n;
 }
-const p = (e, t) => {
-  const n = e.__vccOpts || e;
-  for (const [r, o] of t)
-    n[r] = o;
-  return n;
-}, S = ["src", "alt"], _ = {
+const S = ["src", "alt"], p = {
   __name: "Image",
   props: {
     src: {
@@ -141,7 +136,7 @@ const p = (e, t) => {
   },
   setup(e) {
     const t = e;
-    return (n, r) => t.src.includes(".svg") ? (l(), c(a(h), {
+    return (n, r) => t.src.includes(".svg") ? (l(), a(c(h), {
       key: 0,
       src: t.src
     }, null, 8, ["src"])) : (l(), g("img", {
@@ -150,10 +145,10 @@ const p = (e, t) => {
       alt: t.alt
     }, null, 8, S));
   }
-}, v = /* @__PURE__ */ p(_, [["__scopeId", "data-v-8d33fbf6"]]), x = {
-  install: (e, t) => e.component("Image", v)
+}, E = {
+  install: (e, t) => e.component("Image", p)
 };
 export {
-  v as Image,
-  x as default
+  p as Image,
+  E as default
 };
