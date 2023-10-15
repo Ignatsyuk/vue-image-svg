@@ -23,8 +23,10 @@ export default {
 
 Or register globally
 ```js
-import Image from 'vue-image-svg';
 import { createApp } from 'vue';
+
+import Image from 'vue-image-svg';
+import 'vue-image-svg/dist/style.css'; // for SVG coloring
 
 const app = createApp(App);
 
