@@ -22,6 +22,7 @@ const props = defineProps({
 svg path:not([fill]),
 svg rect:not([fill]),
 svg g:not([fill]),
+svg circle:not([fill]),
 svg ellipse:not([fill]) {
   fill: currentColor !important;
 }
