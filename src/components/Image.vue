@@ -19,11 +19,11 @@ const props = defineProps({
 </script>
 
 <style>
-svg path:not([fill]),
-svg rect:not([fill]),
-svg g:not([fill]),
-svg circle:not([fill]),
-svg ellipse:not([fill]) {
+svg path:not([fill]):not([class]),
+svg rect:not([fill]):not([class]),
+svg g:not([fill]):not([class]),
+svg circle:not([fill]):not([class]),
+svg ellipse:not([fill]):not([class]) {
   fill: currentColor !important;
 }
 </style>
