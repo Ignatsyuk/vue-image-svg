@@ -24,6 +24,6 @@ svg rect:not([fill]):not([class]),
 svg g:not([fill]):not([class]),
 svg circle:not([fill]):not([class]),
 svg ellipse:not([fill]):not([class]) {
-  fill: currentColor !important;
+  fill: currentColor;
 }
 </style>
