@@ -57,6 +57,13 @@ An alternate text for an image, if the image cannot be displayed
 <Image src="/image.svg" alt="Application Logo" />
 ```
 
+#### - `default-src`
+An alternate path for the image in case of a loading error
+
+```html
+<Image src="/image.png" default-src="image-2.png" alt="Application Logo" />
+```
+
 ## License
 
 MIT License

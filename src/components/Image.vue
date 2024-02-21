@@ -1,6 +1,6 @@
 <template>
-  <InlineSvg v-if="props.src.includes('.svg')" :src="props.src"></InlineSvg>
-  <img v-else :src="props.src" :alt="props.alt" />
+  <InlineSvg v-if="src.includes('.svg')" :src="src" @error="onError"></InlineSvg>
+  <img v-else :src="src" :alt="alt" @error="onError" />
 </template>
 
 <script setup>
@@ -14,8 +14,19 @@ const props = defineProps({
 
   alt: {
     type: String,
-  }
+  },
+
+  defaultSrc: {
+    type: String,
+    default: '',
+  },
 })
+
+function onError(e) {
+  if (props.defaultSrc) {
+    e.target.src = props.defaultSrc
+  }
+}
 </script>
 
 <style>

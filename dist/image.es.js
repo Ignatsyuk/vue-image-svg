@@ -84,7 +84,7 @@ const h = {
      * @returns {PromiseWithState<Element>}
      */
     download(e) {
-      return m(new Promise((t, n) => {
+      return S(new Promise((t, n) => {
         const r = new XMLHttpRequest();
         r.open("GET", e, !0), r.onload = () => {
           if (r.status >= 200 && r.status < 400)
@@ -110,7 +110,7 @@ function f(e, t) {
     r.textContent = t, e.insertBefore(r, e.firstChild);
   }
 }
-function m(e) {
+function S(e) {
   if (e.getIsPending)
     return e;
   let t = !0, n = e.then(
@@ -123,7 +123,7 @@ function m(e) {
     return t;
   }, n;
 }
-const S = ["src", "alt"], p = {
+const m = ["src", "alt"], p = {
   __name: "Image",
   props: {
     src: {
@@ -132,23 +132,31 @@ const S = ["src", "alt"], p = {
     },
     alt: {
       type: String
+    },
+    defaultSrc: {
+      type: String,
+      default: ""
     }
   },
   setup(e) {
     const t = e;
-    return (n, r) => t.src.includes(".svg") ? (l(), a(c(h), {
+    function n(r) {
+      t.defaultSrc && (r.target.src = t.defaultSrc);
+    }
+    return (r, i) => e.src.includes(".svg") ? (l(), a(c(h), {
       key: 0,
-      src: t.src
+      src: e.src
     }, null, 8, ["src"])) : (l(), g("img", {
       key: 1,
-      src: t.src,
-      alt: t.alt
-    }, null, 8, S));
+      src: e.src,
+      alt: e.alt,
+      onError: n
+    }, null, 40, m));
   }
-}, E = {
+}, w = {
   install: (e, t) => e.component("Image", p)
 };
 export {
   p as Image,
-  E as default
+  w as default
 };
