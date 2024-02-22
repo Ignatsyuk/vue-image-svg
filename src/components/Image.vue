@@ -16,15 +16,14 @@ const props = defineProps({
     type: String,
   },
 
-  defaultSrc: {
+  alternativeSrc: {
     type: String,
-    default: '',
   },
 })
 
 function onError(e) {
-  if (props.defaultSrc) {
-    e.target.src = props.defaultSrc
+  if (props.alternativeSrc) {
+    e.target.src = props.alternativeSrc
   }
 }
 </script>

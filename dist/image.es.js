@@ -1,7 +1,7 @@
 import { h as u, openBlock as l, createBlock as a, unref as c, createElementBlock as g } from "vue";
 const s = {};
 function d(e) {
-  return Object.keys(e).reduce((t, n) => (e[n] !== !1 && e[n] !== null && e[n] !== void 0 && (t[n] = e[n]), t), {});
+  return Object.keys(e).reduce((n, t) => (e[t] !== !1 && e[t] !== null && e[t] !== void 0 && (n[t] = e[t]), n), {});
 }
 const h = {
   name: "InlineSvg",
@@ -54,13 +54,13 @@ const h = {
   },
   methods: {
     getSvgAttrs(e) {
-      let t = {};
-      const n = e.attributes;
-      if (!n)
-        return t;
-      for (let r = n.length - 1; r >= 0; r--)
-        t[n[r].name] = n[r].value;
-      return t;
+      let n = {};
+      const t = e.attributes;
+      if (!t)
+        return n;
+      for (let r = t.length - 1; r >= 0; r--)
+        n[t[r].name] = t[r].value;
+      return n;
     },
     getSvgContent(e) {
       return e = e.cloneNode(!0), e = this.transformSource(e), this.title && f(e, this.title), e.innerHTML;
@@ -70,12 +70,12 @@ const h = {
      * @param {string} src
      */
     getSource(e) {
-      s[e] || (s[e] = this.download(e)), this.svgElSource && s[e].getIsPending() && !this.keepDuringLoading && (this.svgElSource = null, this.$emit("unloaded")), s[e].then((t) => {
-        this.svgElSource = t, this.$nextTick(() => {
+      s[e] || (s[e] = this.download(e)), this.svgElSource && s[e].getIsPending() && !this.keepDuringLoading && (this.svgElSource = null, this.$emit("unloaded")), s[e].then((n) => {
+        this.svgElSource = n, this.$nextTick(() => {
           this.$emit("loaded", this.$el);
         });
-      }).catch((t) => {
-        this.svgElSource && (this.svgElSource = null, this.$emit("unloaded")), delete s[e], this.$emit("error", t);
+      }).catch((n) => {
+        this.svgElSource && (this.svgElSource = null, this.$emit("unloaded")), delete s[e], this.$emit("error", n);
       });
     },
     /**
@@ -84,46 +84,46 @@ const h = {
      * @returns {PromiseWithState<Element>}
      */
     download(e) {
-      return S(new Promise((t, n) => {
+      return S(new Promise((n, t) => {
         const r = new XMLHttpRequest();
         r.open("GET", e, !0), r.onload = () => {
           if (r.status >= 200 && r.status < 400)
             try {
               let o = new DOMParser().parseFromString(r.responseText, "text/xml").getElementsByTagName("svg")[0];
-              o ? t(o) : n(new Error('Loaded file is not valid SVG"'));
+              o ? n(o) : t(new Error('Loaded file is not valid SVG"'));
             } catch (i) {
-              n(i);
+              t(i);
             }
           else
-            n(new Error("Error loading SVG"));
-        }, r.onerror = n, r.send();
+            t(new Error("Error loading SVG"));
+        }, r.onerror = t, r.send();
       }));
     }
   }
 };
-function f(e, t) {
-  const n = e.getElementsByTagName("title");
-  if (n.length)
-    n[0].textContent = t;
+function f(e, n) {
+  const t = e.getElementsByTagName("title");
+  if (t.length)
+    t[0].textContent = n;
   else {
     const r = document.createElementNS("http://www.w3.org/2000/svg", "title");
-    r.textContent = t, e.insertBefore(r, e.firstChild);
+    r.textContent = n, e.insertBefore(r, e.firstChild);
   }
 }
 function S(e) {
   if (e.getIsPending)
     return e;
-  let t = !0, n = e.then(
-    (r) => (t = !1, r),
+  let n = !0, t = e.then(
+    (r) => (n = !1, r),
     (r) => {
-      throw t = !1, r;
+      throw n = !1, r;
     }
   );
-  return n.getIsPending = function() {
-    return t;
-  }, n;
+  return t.getIsPending = function() {
+    return n;
+  }, t;
 }
-const m = ["src", "alt"], p = {
+const m = ["src", "alt"], v = {
   __name: "Image",
   props: {
     src: {
@@ -133,30 +133,30 @@ const m = ["src", "alt"], p = {
     alt: {
       type: String
     },
-    defaultSrc: {
-      type: String,
-      default: ""
+    alternativeSrc: {
+      type: String
     }
   },
   setup(e) {
-    const t = e;
-    function n(r) {
-      t.defaultSrc && (r.target.src = t.defaultSrc);
+    const n = e;
+    function t(r) {
+      n.alternativeSrc && (r.target.src = n.alternativeSrc);
     }
     return (r, i) => e.src.includes(".svg") ? (l(), a(c(h), {
       key: 0,
-      src: e.src
+      src: e.src,
+      onError: t
     }, null, 8, ["src"])) : (l(), g("img", {
       key: 1,
       src: e.src,
       alt: e.alt,
-      onError: n
+      onError: t
     }, null, 40, m));
   }
 }, w = {
-  install: (e, t) => e.component("Image", p)
+  install: (e, n) => e.component("Image", v)
 };
 export {
-  p as Image,
+  v as Image,
   w as default
 };
